@@ -33,6 +33,14 @@ class SuperCalculatorCommand(sublime_plugin.TextCommand):
         self.callables['avg'] = average
         self.callables['average'] = average
 
+        if self.settings.get("angles_in_degrees"):
+            self.callables['sin'] = lambda arg: math.sin(math.radians(arg))
+            self.callables['cos'] = lambda arg: math.cos(math.radians(arg))
+            self.callables['tan'] = lambda arg: math.tan(math.radians(arg))
+            self.callables['asin'] = lambda arg: math.degrees(math.asin(arg))
+            self.callables['acos'] = lambda arg: math.degrees(math.acos(arg))
+            self.callables['atan'] = lambda arg: math.degrees(math.atan(arg))
+
         class Constant(object):
             def __init__(self, func):
                 self._func = func
