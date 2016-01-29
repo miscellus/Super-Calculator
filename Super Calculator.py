@@ -40,6 +40,7 @@ class SuperCalculatorCommand(sublime_plugin.TextCommand):
             self.callables['asin'] = lambda arg: math.degrees(math.asin(arg))
             self.callables['acos'] = lambda arg: math.degrees(math.acos(arg))
             self.callables['atan'] = lambda arg: math.degrees(math.atan(arg))
+            self.callables['atan2'] = lambda arg1, arg2: math.degrees(math.atan2(arg1, arg2))
 
         class Constant(object):
             def __init__(self, func):
@@ -94,9 +95,7 @@ class SuperCalculatorCommand(sublime_plugin.TextCommand):
                         result = round(Decimal(result), self.settings.get("round_decimals"))
                     result = str(result)
                     if self.settings.get("trim_zeros") and '.' in result:
-                        result =  result.strip('0').rstrip('.')
-                        if result == '':
-                            result = '0'
+                        result =  '0' + result.strip('0').rstrip('.')
                     if result != expr:
                         self.view.replace(edit, region, result)
                         sublime.status_message("Calculated result: " + expr + "=" + result)
