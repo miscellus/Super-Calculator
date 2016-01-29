@@ -96,8 +96,8 @@ class SuperCalculatorCommand(sublime_plugin.TextCommand):
                     result = str(result)
                     if self.settings.get("trim_zeros") and '.' in result:
                         result =  result.strip('0').rstrip('.')
-                        if result == '':
-                            result = '0'
+                        if result[0] == '.' or result == '':
+                            result = '0' + result
                     if result != expr:
                         self.view.replace(edit, region, result)
                         sublime.status_message("Calculated result: " + expr + "=" + result)
