@@ -1,3 +1,4 @@
+*With added option to have angles in degrees and prepending a zero to zero-trimmed results*
 Super Calculator
 ================
 * Author: Chiel Robben
