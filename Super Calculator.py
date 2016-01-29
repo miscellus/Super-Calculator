@@ -95,7 +95,9 @@ class SuperCalculatorCommand(sublime_plugin.TextCommand):
                         result = round(Decimal(result), self.settings.get("round_decimals"))
                     result = str(result)
                     if self.settings.get("trim_zeros") and '.' in result:
-                        result =  '0' + result.strip('0').rstrip('.')
+                        result =  result.strip('0').rstrip('.')
+                        if result == '':
+                            result = '0'
                     if result != expr:
                         self.view.replace(edit, region, result)
                         sublime.status_message("Calculated result: " + expr + "=" + result)
