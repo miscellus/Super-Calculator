@@ -2,5 +2,6 @@
     // Round results to the specified decimals
     "round_decimals": 6,
     "trime_zeros": true,
-    "angles_in_degrees": true
+    "angles_in_degrees": true,
+    "keep_expression": false
 }
